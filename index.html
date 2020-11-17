@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>index</title>
+</head>
+<body>
+<input type="text" id="add" placeholder="add">
+<button type="button" onclick="add_arr()">Add</button>
+<button type="button" onclick="display_arr()">Display</button>
+<br>
+<br>
+<input type="text" id="remove" onchange="remove()"><br><br>
+<button type="button" onclick="sort_arr()">Sort</button>
+<p id="output"></p>
+<script>
+    let arr=[];
+    function add_arr()
+    {
+        arr.push(+document.getElementById('add').value);
+    }
+    function display_arr()
+    {
+        let output='';
+        for(let i=0;i<arr.length;i++)
+        {
+            output+=arr[i]+' ';
+        }
+        document.getElementById('output').innerHTML=output;
+    }
+    function remove()
+    {
+        let v=+document.getElementById('remove').value;
+        let index=arr.indexOf(v);
+        if(index!=-1)
+        {
+            arr.splice(index,1);
+        }
+    }
+    function sort_arr()
+    {
+        arr.sort(function(a,b){return b-a});
+        display_arr();
+    }
+</script>
+</body>
+</html>
